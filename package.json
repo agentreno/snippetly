@@ -4,7 +4,8 @@
   "description": "Snippetly manages code snippets",
   "main": "api/bin/www.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:api": "./api/bin/www"
   },
   "repository": {
     "type": "git",
