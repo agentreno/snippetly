@@ -1,0 +1,19 @@
+{
+  "name": "snippetly",
+  "version": "0.1.0",
+  "description": "Snippetly manages code snippets",
+  "main": "api/bin/www.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentreno/snippetly.git"
+  },
+  "author": "Karl Hopkinson-Turrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agentreno/snippetly/issues"
+  },
+  "homepage": "https://github.com/agentreno/snippetly#readme"
+}
