@@ -24,22 +24,6 @@ const typeDefs = `
     }
 `
 
-// Dummy data
-const snippets = [
-    {
-        id: 1,
-        language: 'Javascript',
-        title: 'Hello World',
-        body: 'console.log("hello world")'
-    },
-    {
-        id: 2,
-        language: 'Python',
-        title: 'Hello World',
-        body: 'print("hello world")'
-    },
-]
-
 // Snippet resolver
 const resolvers = {
     Query: {
