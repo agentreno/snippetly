@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/agentreno/snippetly/issues"
   },
-  "homepage": "https://github.com/agentreno/snippetly#readme"
+  "homepage": "https://github.com/agentreno/snippetly#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "express-generator": "^4.16.0"
+  }
 }
