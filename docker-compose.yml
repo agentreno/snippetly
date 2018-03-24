@@ -15,3 +15,12 @@ services:
       - mongo
     links:
       - mongo
+
+  api:
+    build: ./api
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - "8000:8000"
