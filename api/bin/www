@@ -22,6 +22,17 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
+ * Connect to Mongo database
+ */
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/snippets')
+mongoose.connection.on('error', onError)
+mongoose.connection.once('open', () => {
+    console.log('Connected to mongodb')
+})
+
+
+/**
  * Listen on provided port, on all network interfaces.
  */
 

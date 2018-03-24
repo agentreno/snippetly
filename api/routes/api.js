@@ -1,10 +1,19 @@
 var express = require('express')
+var mongoose = require('mongoose')
 var graphqlHTTP = require('express-graphql')
 var { makeExecutableSchema } = require('graphql-tools')
 
+// Database
+const snippetModel = mongoose.model('Snippet', {
+    _id: mongoose.Schema.Types.ObjectId,
+    language: String,
+    title: String,
+    body: String
+})
+
 const typeDefs = `
     type Snippet {
-        id: Int!
+        _id: String!
         language: String
         title: String
         body: String
@@ -34,7 +43,14 @@ const snippets = [
 // Snippet resolver
 const resolvers = {
     Query: {
-        snippets: () => snippets,
+        snippets: () => {
+            var snippets = new Promise((resolve, reject) => {
+                snippetModel.find({}, (err, snippets) => {
+                    err ? reject(err) : resolve(snippets)
+                })
+            })
+            return snippets
+        }
     },
 }
 
