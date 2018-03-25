@@ -17,7 +17,9 @@ services:
       - mongo
 
   api:
-    build: ./api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
     depends_on:
       - mongo
     links:
