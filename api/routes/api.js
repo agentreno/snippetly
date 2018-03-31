@@ -24,6 +24,7 @@ const typeDefs = `
     }
 
     type Mutation {
+        addSnippet(language: String!, title: String!, body: String!): Snippet,
         deleteSnippet(_id: String!): Snippet
     }
 
@@ -46,6 +47,14 @@ const resolvers = {
         }
     },
     Mutation: {
+        addSnippet: (_, {language, title, body}) => {
+            return new snippetModel({
+                _id: mongoose.Types.ObjectId(),
+                language,
+                title,
+                body
+            }).save()
+        },
         deleteSnippet: (_, _id) => {
             return snippetModel.findById(_id).then(snippet => snippet.remove())
         }
