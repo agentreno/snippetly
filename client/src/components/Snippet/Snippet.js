@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
+import debounce from 'debounce'
 
 import { GET_SNIPPETS, DELETE_SNIPPET, UPDATE_SNIPPET } from '../../queries'
 import './Snippet.css'
@@ -8,11 +9,18 @@ class Snippet extends Component {
     constructor(props) {
         super(props)
         this.state = { body: this.props.body }
+
+        // Yuck, need to find a better way than an extra function
+        this.updateBodyServer = debounce(this.updateBodyServer, 250)
+    }
+
+    updateBodyServer(updateSnippet, variables) {
+        updateSnippet(variables)
     }
 
     handleBodyChange(e, updateSnippet) {
         this.setState({ body: e.target.value })
-        updateSnippet({ variables: {_id: this.props._id, body: e.target.value }})
+        this.updateBodyServer(updateSnippet, { variables: {_id: this.props._id, body: e.target.value }})
     }
 
     render() {
