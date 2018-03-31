@@ -22,6 +22,15 @@ const typeDefs = `
     type Query {
         snippets: [Snippet]
     }
+
+    type Mutation {
+        deleteSnippet(_id: String!): Snippet
+    }
+
+    schema {
+        query: Query,
+        mutation: Mutation
+    }
 `
 
 // Snippet resolver
@@ -36,6 +45,11 @@ const resolvers = {
             return snippets
         }
     },
+    Mutation: {
+        deleteSnippet: (_, _id) => {
+            return snippetModel.findById(_id).then(snippet => snippet.remove())
+        }
+    }
 }
 
 
