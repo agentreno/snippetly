@@ -1,0 +1,39 @@
+.createSnippet {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+    border: 2px solid black;
+    max-width: 500px;
+}
+
+.createSnippet .formFields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createSnippet .formFields li {
+    width: 400px;
+    list-style-type: none;
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.createSnippet .formFields button,
+.createSnippet .formFields input,
+.createSnippet .formFields label {
+    display: block;
+}
+
+.createSnippet .formFields button {
+    margin: 0 auto;
+}
+
+.createSnippet .formFields input {
+    max-width: 300px;
+    flex-grow: 1;
+}

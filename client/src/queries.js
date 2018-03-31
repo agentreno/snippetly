@@ -20,3 +20,13 @@ export const DELETE_SNIPPET = gql`
     }
 `
 
+export const ADD_SNIPPET = gql`
+    mutation AddSnippet($language: String!, $title: String!, $body: String!) {
+        addSnippet(language: $language, title: $title, body: $body) {
+            _id,
+            language,
+            title,
+            body
+        }
+    }
+`
