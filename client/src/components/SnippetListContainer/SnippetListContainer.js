@@ -1,22 +1,11 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
 
 import SnippetList from '../SnippetList/SnippetList'
-
-const snippetsQuery = gql`
-    {
-        snippets {
-            _id,
-            language,
-            title,
-            body
-        }
-    }
-`
+import { GET_SNIPPETS } from '../../queries'
 
 const SnippetListContainer = () => (
-    <Query query={snippetsQuery}>
+    <Query query={GET_SNIPPETS}>
         {
             ({ loading, error, data }) => {
                 if (loading) return <p>Loading...</p>
