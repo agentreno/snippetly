@@ -27,6 +27,7 @@ const typeDefs = `
     type Mutation {
         addSnippet(language: String!, title: String!, body: String!): Snippet
         deleteSnippet(_id: String!): Snippet
+        updateSnippet(_id: String!, language: String, title: String, body: String): Snippet
     }
 
     schema {
@@ -59,6 +60,20 @@ const resolvers = {
         },
         deleteSnippet: (_, _id) => {
             return snippetModel.findById(_id).then(snippet => snippet.remove())
+        },
+        updateSnippet: (_, {_id, language, title, body}) => {
+            // Avoid overwriting fields when not all fields are supplied
+            // Return the updated object with new: true
+            let updatedFields = {
+                ...language ? {language} : {},
+                ...title ? {title} : {},
+                ...body ? {body} : {},
+            }
+            return snippetModel.findByIdAndUpdate(
+                _id,
+                updatedFields,
+                { new: true }
+            )
         }
     }
 }
