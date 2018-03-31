@@ -37,17 +37,17 @@ const CreateSnippet = () => {
                     >
                         <ul className="formFields">
                             <li>
-                                <label for="language">Language:</label>
+                                <label htmlFor="language">Language:</label>
                                 <input id="language" ref={node => {languageInput = node}} />
                             </li>
 
                             <li>
-                                <label for="title">Title:</label>
+                                <label htmlFor="title">Title:</label>
                                 <input id="title" ref={node => {titleInput = node}} />
                             </li>
 
                             <li>
-                                <label for="body">Body:</label>
+                                <label htmlFor="body">Body:</label>
                                 <input id="body" ref={node => {bodyInput = node}} />
                             </li>
 

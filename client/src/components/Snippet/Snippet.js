@@ -8,7 +8,7 @@ const Snippet = ({ _id, language, title, body }) => (
     <div className="snippet">
         <h2>{title}</h2>
         <h3>Language: {language}</h3>
-        <textarea rows="10" cols="80">{body}</textarea>
+        <textarea rows="10" cols="80" value={body} readOnly />
         <Mutation
             mutation={DELETE_SNIPPET}
             update={(cache, { data: deletedSnippet }) => {
