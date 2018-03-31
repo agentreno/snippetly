@@ -1,33 +1,56 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 
-import { GET_SNIPPETS, DELETE_SNIPPET } from '../../queries'
+import { GET_SNIPPETS, DELETE_SNIPPET, UPDATE_SNIPPET } from '../../queries'
 import './Snippet.css'
 
-const Snippet = ({ _id, language, title, body }) => (
-    <div className="snippet">
-        <h2>{title}</h2>
-        <h3>Language: {language}</h3>
-        <textarea rows="10" cols="80" value={body} readOnly />
-        <Mutation
-            mutation={DELETE_SNIPPET}
-            update={(cache, { data: deletedSnippet }) => {
-                const { snippets } = cache.readQuery({ query: GET_SNIPPETS })
-                cache.writeQuery({
-                    query: GET_SNIPPETS,
-                    data: { snippets: snippets.filter(snippet => snippet._id !== _id) }
-                })
-            }}
-        >
-            {(deleteSnippet, { data }) => (
-                <button onClick={ () => {
-                    deleteSnippet({ variables: { id: _id }})
-                }}>
-                    Delete Snippet
-                </button>
-            )}
-        </Mutation>
-    </div>
-)
+class Snippet extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { body: this.props.body }
+    }
+
+    handleBodyChange(e, updateSnippet) {
+        this.setState({ body: e.target.value })
+        updateSnippet({ variables: {_id: this.props._id, body: e.target.value }})
+    }
+
+    render() {
+        return (
+            <div className="snippet">
+                <h2>{this.props.title}</h2>
+                <h3>Language: {this.props.language}</h3>
+                <Mutation mutation={UPDATE_SNIPPET}>
+                    {updateSnippet => (
+                        <textarea
+                            rows="10"
+                            cols="80"
+                            value={this.state.body}
+                            onChange={e => this.handleBodyChange(e, updateSnippet)}
+                        />
+                    )}
+                </Mutation>
+                <Mutation
+                    mutation={DELETE_SNIPPET}
+                    update={(cache, { data: deletedSnippet }) => {
+                        const { snippets } = cache.readQuery({ query: GET_SNIPPETS })
+                        cache.writeQuery({
+                            query: GET_SNIPPETS,
+                            data: { snippets: snippets.filter(snippet => snippet._id !== this.props._id) }
+                        })
+                    }}
+                >
+                    {deleteSnippet => (
+                        <button onClick={ () => {
+                            deleteSnippet({ variables: { id: this.props._id }})
+                        }}>
+                            Delete Snippet
+                        </button>
+                    )}
+                </Mutation>
+            </div>
+        )
+    }
+}
 
 export default Snippet

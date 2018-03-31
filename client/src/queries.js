@@ -30,3 +30,14 @@ export const ADD_SNIPPET = gql`
         }
     }
 `
+
+export const UPDATE_SNIPPET = gql`
+    mutation UpdateSnippet($_id: String!, $language: String, $title: String, $body: String) {
+        updateSnippet(_id: $_id, language: $language, title: $title, body: $body) {
+            _id,
+            language,
+            title,
+            body
+        }
+    }
+`
