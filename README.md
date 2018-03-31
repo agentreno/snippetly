@@ -8,5 +8,4 @@ React/Redux frontend.
 
 ## TODO
 
-- Add support for individual snippet queries on API
 - Fix mongo-seed running on every `docker-compose up`

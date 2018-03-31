@@ -21,15 +21,16 @@ const typeDefs = `
 
     type Query {
         snippets: [Snippet]
+        snippet(_id: String!): Snippet
     }
 
     type Mutation {
-        addSnippet(language: String!, title: String!, body: String!): Snippet,
+        addSnippet(language: String!, title: String!, body: String!): Snippet
         deleteSnippet(_id: String!): Snippet
     }
 
     schema {
-        query: Query,
+        query: Query
         mutation: Mutation
     }
 `
@@ -44,7 +45,8 @@ const resolvers = {
                 })
             })
             return snippets
-        }
+        },
+        snippet: (_, { _id }) => snippetModel.findById(_id)
     },
     Mutation: {
         addSnippet: (_, {language, title, body}) => {
