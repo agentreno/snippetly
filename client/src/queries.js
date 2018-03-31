@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const GET_SNIPPETS = gql`
-    {
+    query GetSnippets {
         snippets {
             _id,
             language,
