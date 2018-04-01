@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
+import AceEditor from 'react-ace'
+import 'brace/mode/javascript'
+import 'brace/theme/monokai'
 import debounce from 'debounce'
 
 import { GET_SNIPPETS, DELETE_SNIPPET, UPDATE_SNIPPET } from '../../queries'
@@ -18,9 +21,9 @@ class Snippet extends Component {
         updateSnippet(variables)
     }
 
-    handleBodyChange(e, updateSnippet) {
-        this.setState({ body: e.target.value })
-        this.updateBodyServer(updateSnippet, { variables: {_id: this.props._id, body: e.target.value }})
+    handleBodyChange(value, ev, updateSnippet) {
+        this.setState({ body: value })
+        this.updateBodyServer(updateSnippet, { variables: {_id: this.props._id, body: value }})
     }
 
     render() {
@@ -30,11 +33,12 @@ class Snippet extends Component {
                 <h3>Language: {this.props.language}</h3>
                 <Mutation mutation={UPDATE_SNIPPET}>
                     {updateSnippet => (
-                        <textarea
-                            rows="10"
-                            cols="80"
+                        <AceEditor
+                            name="snippetBody"
+                            mode="javascript"
+                            theme="monokai"
                             value={this.state.body}
-                            onChange={e => this.handleBodyChange(e, updateSnippet)}
+                            onChange={(value, ev) => this.handleBodyChange(value, ev, updateSnippet)}
                         />
                     )}
                 </Mutation>
