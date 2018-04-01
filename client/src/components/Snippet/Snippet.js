@@ -5,6 +5,7 @@ import 'brace/mode/javascript'
 import 'brace/theme/monokai'
 import debounce from 'debounce'
 
+import devIcons from '../../icons'
 import { GET_SNIPPETS, DELETE_SNIPPET, UPDATE_SNIPPET } from '../../queries'
 import './Snippet.css'
 
@@ -27,16 +28,21 @@ class Snippet extends Component {
     }
 
     render() {
+        let classes = `Snippet ${this.props.language}`
+        let iconGen = devIcons[this.props.language] || (() => '')
+
         return (
-            <div className="snippet">
+            <div className={classes}>
                 <h2>{this.props.title}</h2>
                 <h3>Language: {this.props.language}</h3>
+                {iconGen()}
                 <Mutation mutation={UPDATE_SNIPPET}>
                     {updateSnippet => (
                         <AceEditor
                             name="snippetBody"
-                            mode="javascript"
+                            mode={this.props.language}
                             theme="monokai"
+                            height="30vh"
                             value={this.state.body}
                             onChange={(value, ev) => this.handleBodyChange(value, ev, updateSnippet)}
                         />
