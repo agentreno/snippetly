@@ -1,11 +1,11 @@
 [
     {
-        "language": "Javascript",
+        "language": "javascript",
         "title": "Hello World",
         "body": "console.log(\"hello world\")"
     },
     {
-        "language": "Python",
+        "language": "python",
         "title": "Hello World",
         "body": "print(\"hello world\")"
     }
