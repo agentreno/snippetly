@@ -10,6 +10,7 @@ class SnippetList extends React.Component {
                 <Carousel3D
                     panelWidth={600}
                     panelHeight={500}
+                    borderSize={0}
                     panelRenderers={
                         this.props.snippets.map(snippet => () => (
                             <Snippet
