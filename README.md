@@ -15,6 +15,7 @@ React/Redux frontend.
 - Improve the development servers
 - Improve the README instructions
 - Do some general styling for delete snippet button, background and add snippet
+- Fix anti-aliasing issue most evident on 5 sided carousel
   form
 - Investigate mode-python.js missing file
 - Investigate automatically scrolling cursor warning
