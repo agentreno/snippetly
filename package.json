@@ -5,7 +5,8 @@
   "main": "api/bin/www.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:api": "./api/bin/www"
+    "start:api": "./api/bin/www",
+    "postinstall": "npm install --prefix api"
   },
   "repository": {
     "type": "git",
