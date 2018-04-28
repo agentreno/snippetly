@@ -9,7 +9,7 @@ import App from './components/App/App'
 
 // Apollo client
 const client = new ApolloClient({
-    uri: 'http://localhost:8000/api'
+    uri: 'https://snippetly.herokuapp.com/api'
 })
 
 ReactDOM.render(
