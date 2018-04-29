@@ -5718,7 +5718,7 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
 
 "react-3d-carousel@https://github.com/agentreno/react-3d-carousel.git":
   version "0.1.0"
-  resolved "https://github.com/agentreno/react-3d-carousel.git#e0830e94871b6d618dafe719684cdd048cdd4dfc"
+  resolved "https://github.com/agentreno/react-3d-carousel.git#2a9536f9cda64ea42bc7a56504127c21e6d3006c"
   dependencies:
     babel-preset-env "^1.6.1"
     react "^16.3.1"
