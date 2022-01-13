@@ -7,18 +7,22 @@
     "debounce": "^1.1.0",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
-    "react": "^16.3.1",
+    "react": "^16.5.0",
     "react-3d-carousel": "https://github.com/agentreno/react-3d-carousel.git",
     "react-ace": "^5.10.0",
-    "react-apollo": "^2.1.0",
-    "react-dom": "^16.3.1",
-    "react-scripts": "1.1.1"
+    "react-apollo": "^2.5.0",
+    "react-dom": "^16.5.0",
+    "react-scripts": "5.0.0",
+    "@snyk/protect": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "install": "./install.sh"
-  }
+    "install": "./install.sh",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
